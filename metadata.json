@@ -1,0 +1,16 @@
+{
+  "name": "Rebell",
+  "description": "An electrifying cyberpunk AI conversational companion and terminal experience developed by voidrebellion, featuring fluid reactive touch animations, atmospheric synth audio, and unbounded intelligent chat.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "clipboard-read",
+    "clipboard-write",
+    "geolocation",
+    "display-capture",
+    "autoplay"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
