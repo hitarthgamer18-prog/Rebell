@@ -162,7 +162,21 @@ Tap or swipe on your screen to spark electric lightning arcs. What are we cookin
         }),
       });
 
-      const data = await res.json();
+      const rawText = await res.text();
+      let data: any = null;
+      try {
+        data = JSON.parse(rawText);
+      } catch {
+        if (!res.ok) {
+          throw new Error(`Server returned HTTP ${res.status}. If running on Vercel, ensure GEMINI_API_KEY is set in Settings > Environment Variables.`);
+        }
+        throw new Error('Received unexpected non-JSON response from neural gateway.');
+      }
+
+      if (!res.ok) {
+        throw new Error(data?.error || data?.reply || `Server error (${res.status})`);
+      }
+
       audioSynth.playReceiveChirp();
 
       const aiMessage: ChatMessage = {
